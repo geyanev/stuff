@@ -1,14 +1,12 @@
-" Pathogen load
-filetype off
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
 
-call pathogen#infect()
-call pathogen#helptags()
+filetype off
 
 filetype plugin indent on
 syntax on
-
-" auto unfold for the python-vim module
-autocmd BufWinEnter * silent! :%foldopen!
 
 " ctrl module to start in the current dir
 let g:ctrlp_working_path_mode = 'c'
@@ -32,21 +30,16 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 "
-" " Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-"
-" " Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-"
-" " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"
-" " Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
-"
+Plug 'vim-airline/vim-airline'
+"Plug 'chriskempson/base16-vim'
+"Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'spolu/dwm.vim'
+"Plug 'zhaocai/GoldenView.Vim'
 " Add plugins to &runtimepath
 call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
