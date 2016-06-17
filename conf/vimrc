@@ -32,6 +32,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'spolu/dwm.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
+Plug 'dkprice/vim-easygrep'
 " Plug 'edkolev/tmuxline.vim'
 " Add plugins to &runtimepath
 call plug#end()

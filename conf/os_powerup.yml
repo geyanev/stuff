@@ -1,0 +1,57 @@
+- name: Developer instance imrpovements
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Install via apt
+      apt:
+        state: present
+        name: "{{ item }}"
+      with_items:
+        - tmux
+        - pip
+        - vim
+
+    - name: Install via pip
+      pip:
+        state: present
+        name: "{{ item }}"
+      with_items:
+        - virtualenv
+        - httpie
+
+    - name: Setup Bash user configuration folder
+      blockinfile:
+        dest: "{{ ansible_env.ansible_env.HOME }}/.bashrc"
+        block: |
+        # .bashrc
+        if [[ $- != *i* ]] ; then
+          # shell is non-interactive. be done now!
+          return
+        fi
+
+        # Load all files from .shell/bashrc.d directory
+        if [ -d {{ ansible_env.HOME }}/.shellrc/bashrc.d ]; then
+          for file in {{ ansible_env.HOME }}/.shellrc/bashrc.d/*.bash; do
+              source $file
+          done
+        fi
+
+        # Load all files from .shell/rc.d directory
+        if [ -d {{ ansible_env.HOME }}/.shellrc/rc.d ]; then
+          for file in {{ ansible_env.HOME }}/.shellrc/rc.d/*.sh; do
+              source $file
+          done
+        fi
+
+    - name: Setup Git Prompt: Clone Git Prompt repo
+      git:
+        repo: https://github.com/magicmonty/bash-git-prompt.git
+        dest: {{ ansible_env.HOME }}/.shellrc/bashrc.d/.bash-git-prompt
+        depth: 1
+
+    - name: Setup Git Bash completion
+      get_url:
+        url: curl http://git.io/vfhol
+        dest: {{ ansible_env.HOME }}/.shellrc/bashrc.d/.git-completion.bash 
+
+    - name: Setup 
