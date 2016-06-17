@@ -6,7 +6,6 @@ augroup END
 filetype off
 
 filetype plugin indent on
-syntax on
 
 " ctrl module to start in the current dir
 let g:ctrlp_working_path_mode = 'c'
@@ -18,28 +17,31 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Ansible vim https://github.com/pearofducks/ansible-vim
-Plug 'pearofducks/ansible-vim'
-
+" Ansible vim https://github.com/chase/vim-ansible-yaml.git
+Plug 'chase/vim-ansible-yaml'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-"
 Plug 'vim-airline/vim-airline'
-"Plug 'chriskempson/base16-vim'
-"Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'spolu/dwm.vim'
-"Plug 'zhaocai/GoldenView.Vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+" Plug 'edkolev/tmuxline.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
+
+set number
+syntax enable
+set background=dark
+let g:solarized_termcolors = 256
+colorscheme solarized
+let g:airline_theme = 'base16'
