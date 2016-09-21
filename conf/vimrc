@@ -43,6 +43,12 @@ Plug 'lepture/vim-jinja'
 Plug 'fatih/vim-go'
 Plug 'fatih/molokai'
 Plug 'tpope/vim-sensible'
+Plug 'jnurmine/Zenburn'
+Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdtree'
 " Plug 'edkolev/tmuxline.vim'
 " Add plugins to &runtimepath
 call plug#end()
@@ -50,6 +56,7 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
+set encoding=utf-8
 set number
 syntax enable
 let g:solarized_termcolors = 16
@@ -57,3 +64,24 @@ set background=dark
 colorscheme solarized
 let base16colorspace=256
 let g:airline_theme = 'base16'
+let python_highlight_all=1
+syntax on
+
+map <C-t> :NERDTreeToggle<CR>
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
