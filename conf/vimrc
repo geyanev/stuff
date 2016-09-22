@@ -61,10 +61,11 @@ set number
 syntax enable
 let g:solarized_termcolors = 16
 set background=dark
-colorscheme solarized
+colorscheme zenburn
 let base16colorspace=256
 let g:airline_theme = 'base16'
 let python_highlight_all=1
+set term=screen-256color
 syntax on
 
 map <C-t> :NERDTreeToggle<CR>
