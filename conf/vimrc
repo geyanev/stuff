@@ -66,6 +66,7 @@ let base16colorspace=256
 let g:airline_theme = 'base16'
 let python_highlight_all=1
 set term=screen-256color
+set expandtab
 syntax on
 
 map <C-t> :NERDTreeToggle<CR>
