@@ -8,7 +8,7 @@ filetype off
 filetype plugin indent on
 
 " ctrl module to start in the current dir
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'r'
 
 vnoremap > >gv
 vnoremap < <gv
@@ -49,6 +49,11 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'thecodesmith/vim-groovy'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Yggdroot/indentLine'
 " Plug 'edkolev/tmuxline.vim'
 " Add plugins to &runtimepath
 call plug#end()
@@ -65,7 +70,7 @@ colorscheme zenburn
 let base16colorspace=256
 let g:airline_theme = 'base16'
 let python_highlight_all=1
-set term=screen-256color
+" set term=screen-256color
 set expandtab
 syntax on
 
@@ -81,6 +86,11 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.groovy  setf groovy 
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
