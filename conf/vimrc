@@ -23,8 +23,7 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Ansible vim https://github.com/chase/vim-ansible-yaml.git
-Plug 'chase/vim-ansible-yaml'
+Plug 'pearofducks/ansible-vim'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 " Any valid git URL is allowed
@@ -35,7 +34,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'spolu/dwm.vim'
+" Plug 'spolu/dwm.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'dkprice/vim-easygrep'
@@ -61,7 +60,7 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-set encoding=utf-8
+" set encoding=utf-8
 set number
 syntax enable
 let g:solarized_termcolors = 16
@@ -95,5 +94,20 @@ au BufNewFile,BufRead *.groovy  setf groovy
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
+au BufRead,BufNewFile ~/Work/Repos/*.yml
+    \ set ft=ansible
+
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Syntastic plugin start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pyflakes']
+" Syntastic plugin end
